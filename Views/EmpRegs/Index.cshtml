@@ -1,0 +1,66 @@
+﻿@model IEnumerable<EmployeeManagement.Models.EmpReg>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<br />
+<h2>Employee Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+@if (TempData["AlertMessage"] != null)
+{
+<div class="alert alert-success">
+    <strong>Success! updated</strong> 
+</div>
+}
+<table class="table table-hover table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FIRST_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LAST_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AGE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESIGNATION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALARY)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIRST_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LAST_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AGE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESIGNATION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SALARY)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EMPID }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EMPID }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EMPID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
